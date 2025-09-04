@@ -1,0 +1,890 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4 Haftada Değişime Adım Atın - Premium Koşu Dönüşüm Programı</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Open+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-deep-blue: #1a237e;
+            --secondary-electric-blue: #2196f3;
+            --accent-orange: #ff6f00;
+            --dark-bg-1: #121212;
+            --dark-bg-2: #1e1e1e;
+            --text-light: #ffffff;
+            --text-gray: #e0e0e0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background: linear-gradient(135deg, var(--dark-bg-1) 0%, var(--dark-bg-2) 100%);
+            color: var(--text-light);
+            overflow-x: hidden;
+        }
+
+        .poppins {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .gradient-bg {
+            background: linear-gradient(135deg, var(--primary-deep-blue) 0%, var(--secondary-electric-blue) 100%);
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, var(--secondary-electric-blue) 0%, var(--accent-orange) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .card-hover {
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .card-hover:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(33, 150, 243, 0.3);
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--accent-orange) 0%, #ff8f00 100%);
+            color: white;
+            padding: 16px 32px;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 111, 0, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(255, 111, 0, 0.4);
+            color: white;
+        }
+
+        .btn-secondary {
+            background: linear-gradient(135deg, var(--secondary-electric-blue) 0%, #42a5f5 100%);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 30px;
+            font-weight: 500;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .btn-secondary:hover {
+            background: transparent;
+            border: 2px solid var(--secondary-electric-blue);
+            color: var(--secondary-electric-blue);
+        }
+
+        .floating-animation {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(50px);
+            animation: fadeInUp 1s ease forwards;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .progress-bar {
+            width: 0%;
+            height: 6px;
+            background: linear-gradient(90deg, var(--accent-orange) 0%, #ff8f00 100%);
+            border-radius: 3px;
+            transition: width 2s ease;
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-left: 40px;
+            margin-bottom: 30px;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 20px;
+            height: 20px;
+            background: var(--accent-orange);
+            border-radius: 50%;
+            border: 3px solid var(--dark-bg-1);
+        }
+
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            left: 9px;
+            top: 20px;
+            width: 2px;
+            height: calc(100% + 10px);
+            background: var(--secondary-electric-blue);
+        }
+
+        .timeline-item:last-child::after {
+            display: none;
+        }
+
+        .accordion-item {
+            margin-bottom: 20px;
+            border-radius: 10px;
+            overflow: hidden;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .accordion-header {
+            padding: 20px;
+            cursor: pointer;
+            background: rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .accordion-header:hover {
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            padding: 0 20px;
+        }
+
+        .accordion-content.active {
+            max-height: 200px;
+            padding: 20px;
+        }
+
+        .stats-counter {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--accent-orange);
+        }
+
+        .whatsapp-float {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            bottom: 40px;
+            right: 40px;
+            background-color: #25d366;
+            color: #FFF;
+            border-radius: 50px;
+            text-align: center;
+            font-size: 30px;
+            box-shadow: 2px 2px 3px #999;
+            z-index: 100;
+            animation: pulse 2s infinite;
+        }
+
+        .whatsapp-float:hover {
+            text-decoration: none;
+            color: #FFF;
+            background-color: #1ebe57;
+        }
+
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
+            }
+            70% {
+                box-shadow: 0 0 0 10px rgba(37, 211, 102, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+            }
+        }
+
+        .hero-bg {
+            background: linear-gradient(135deg, var(--primary-deep-blue) 0%, var(--dark-bg-2) 50%, var(--secondary-electric-blue) 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+        }
+
+        @media (max-width: 768px) {
+            .stats-counter {
+                font-size: 2rem;
+            }
+            
+            .whatsapp-float {
+                width: 50px;
+                height: 50px;
+                bottom: 20px;
+                right: 20px;
+                font-size: 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- WhatsApp Float Button -->
+    <a href="https://wa.me/905344678855?text=Merhaba!%204%20Haftada%20Değişime%20Adım%20Atın%20programı%20hakkında%20bilgi%20almak%20istiyorum.%20🏃‍♀️" 
+       class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp" style="margin-top:16px"></i>
+    </a>
+
+    <!-- Hero Section -->
+    <section class="hero-bg">
+        <div class="container mx-auto px-4 py-20">
+            <div class="text-center">
+                <h1 class="poppins text-6xl md:text-8xl font-bold mb-6 fade-in">
+                    <span class="gradient-text">4 Haftada</span><br>
+                    <span class="text-white">Değişime Adım Atın</span>
+                </h1>
+                <p class="text-xl md:text-2xl text-gray-300 mb-8 max-w-3xl mx-auto fade-in" style="animation-delay: 0.2s">
+                    Hareket ile hayatınızı dönüştürün. Bilimsel metodoloji ve psikolojik destek ile 
+                    koşuyu yaşam tarzınız haline getirin.
+                </p>
+                
+                <!-- Progress Indicator -->
+                <div class="max-w-md mx-auto mb-8 fade-in" style="animation-delay: 0.4s">
+                    <div class="flex justify-between text-sm text-gray-400 mb-2">
+                        <span>Program Dolgusu</span>
+                        <span>%73</span>
+                    </div>
+                    <div class="w-full bg-gray-700 rounded-full h-2">
+                        <div class="progress-bar rounded-full" id="progressBar"></div>
+                    </div>
+                    <p class="text-sm text-gray-400 mt-2">Bu ay kalan kontenjan: 8 kişi</p>
+                </div>
+
+                <div class="space-x-4 fade-in" style="animation-delay: 0.6s">
+                    <a href="https://forms.gle/unfXE4mPCrxvVC1z6" class="btn-primary text-lg">
+                        <i class="fas fa-play-circle mr-2"></i>Hemen Kayıt Ol
+                    </a>
+                    <a href="#program" class="btn-secondary">
+                        <i class="fas fa-info-circle mr-2"></i>Program Detayları
+                    </a>
+                </div>
+
+                <!-- Stats -->
+                <div class="grid grid-cols-3 gap-8 max-w-2xl mx-auto mt-16 fade-in" style="animation-delay: 0.8s">
+                    <div class="text-center">
+                        <div class="stats-counter">847</div>
+                        <p class="text-gray-400">Başarılı Dönüşüm</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="stats-counter">%89</div>
+                        <p class="text-gray-400">Tamamlama Oranı</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="stats-counter">4.8</div>
+                        <p class="text-gray-400">Memnuniyet Puanı</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem Section -->
+    <section class="py-20">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="poppins text-4xl md:text-5xl font-bold mb-6">
+                    <span class="gradient-text">Kendinizde Bu Durumları</span><br>
+                    <span class="text-white">Fark Ediyor Musunuz?</span>
+                </h2>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="card-hover rounded-xl p-8 text-center">
+                    <div class="text-red-400 text-5xl mb-4">
+                        <i class="fas fa-battery-empty"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4">Sürekli Yorgunluk</h3>
+                    <p class="text-gray-400">Sabah kalktığınızda bile yorgun hissediyorsunuz. Günlük aktiviteler bile size ağır geliyor.</p>
+                </div>
+
+                <div class="card-hover rounded-xl p-8 text-center">
+                    <div class="text-red-400 text-5xl mb-4">
+                        <i class="fas fa-stairs"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4">Nefes Nefese Kalmak</h3>
+                    <p class="text-gray-400">Merdiven çıkarken, hızlı yürürken nefes almakta zorlanıyorsunuz.</p>
+                </div>
+
+                <div class="card-hover rounded-xl p-8 text-center">
+                    <div class="text-red-400 text-5xl mb-4">
+                        <i class="fas fa-frown"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4">Motivasyon Eksikliği</h3>
+                    <p class="text-gray-400">Spora başlamak istiyorsunuz ama nereden başlayacağınızı bilmiyorsunuz.</p>
+                </div>
+
+                <div class="card-hover rounded-xl p-8 text-center">
+                    <div class="text-red-400 text-5xl mb-4">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4">Zaman Kısıtı</h3>
+                    <p class="text-gray-400">"Zamanım yok" düşüncesi ile sürekli spora başlamayı erteliyorsunuz.</p>
+                </div>
+
+                <div class="card-hover rounded-xl p-8 text-center">
+                    <div class="text-red-400 text-5xl mb-4">
+                        <i class="fas fa-repeat"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4">Başlayıp Bırakma</h3>
+                    <p class="text-gray-400">Daha önce başladınız ama sürdüremediniz. Bu kez farklı olmasını istiyorsunuz.</p>
+                </div>
+
+                <div class="card-hover rounded-xl p-8 text-center">
+                    <div class="text-red-400 text-5xl mb-4">
+                        <i class="fas fa-user-times"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4">Yalnızlık Hissi</h3>
+                    <p class="text-gray-400">Bu yolculukta yalnız olacağınızı düşünüyor, destek bulamayacağınızdan korkuyorsunuz.</p>
+                </div>
+            </div>
+
+            <div class="text-center mt-12">
+                <p class="text-xl text-gray-300 mb-8">
+                    <span class="text-orange-400 font-semibold">Eğer bu durumlardan birini veya birkaçını yaşıyorsanız,</span><br>
+                    doğru yerdesiniz. Çözüm burada!
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solution Section -->
+    <section class="py-20 gradient-bg" id="program">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="poppins text-4xl md:text-5xl font-bold mb-6 text-white">
+                    4 Haftalık Bilimsel Dönüşüm Programı
+                </h2>
+                <p class="text-xl text-blue-100 max-w-3xl mx-auto">
+                    Harvard Medical School ve Mayo Clinic araştırmalarına dayalı metodoloji ile 
+                    sadece koşmayı değil, yaşam tarzı değişikliğini öğrenin.
+                </p>
+            </div>
+
+            <!-- Program Timeline -->
+            <div class="max-w-4xl mx-auto">
+                <div class="timeline-item">
+                    <div class="bg-white bg-opacity-10 rounded-xl p-6">
+                        <h3 class="text-2xl font-bold mb-3 text-white">1. Hafta: Temel Oluşturma</h3>
+                        <p class="text-blue-100 mb-3">Seans Süresi: 45 dakika - 1 saat (3 seans)</p>
+                        <ul class="text-blue-100 space-y-1">
+                            <li>• Kişisel değerlendirme ve hedef belirleme</li>
+                            <li>• Temel yürüyüş tekniklerini öğrenme</li>
+                            <li>• Alışkanlık döngüsü oluşturma</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="bg-white bg-opacity-10 rounded-xl p-6">
+                        <h3 class="text-2xl font-bold mb-3 text-white">2. Hafta: Geçiş Dönemi</h3>
+                        <p class="text-blue-100 mb-3">Seans Süresi: 45 dakika - 1 saat (3 seans)</p>
+                        <ul class="text-blue-100 space-y-1">
+                            <li>• Yürüme-koşu kombinasyonu</li>
+                            <li>• Nefes teknikleri ve ritim bulma</li>
+                            <li>• Motivasyon stratejileri</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="bg-white bg-opacity-10 rounded-xl p-6">
+                        <h3 class="text-2xl font-bold mb-3 text-white">3. Hafta: Gelişim</h3>
+                        <p class="text-blue-100 mb-3">Seans Süresi: 45 dakika - 1 saat (3 seans)</p>
+                        <ul class="text-blue-100 space-y-1">
+                            <li>• Koşu süresini artırma</li>
+                            <li>• Mental dayanıklılık geliştirme</li>
+                            <li>• Zorluklarla başa çıkma teknikleri</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="bg-white bg-opacity-10 rounded-xl p-6">
+                        <h3 class="text-2xl font-bold mb-3 text-white">4. Hafta: Sürdürülebilirlik</h3>
+                        <p class="text-blue-100 mb-3">Seans Süresi: 45 dakika - 1 saat (3 seans)</p>
+                        <ul class="text-blue-100 space-y-1">
+                            <li>• 20 dakika kesintisiz koşu hedefi</li>
+                            <li>• Yaşam tarzına entegrasyon</li>
+                            <li>• Gelecek planları ve sürdürüm stratejileri</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="py-20">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="poppins text-4xl md:text-5xl font-bold mb-6">
+                    <span class="gradient-text">Programda Neler Var?</span>
+                </h2>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="card-hover rounded-xl p-8 text-center">
+                    <div class="text-orange-400 text-5xl mb-4">
+                        <i class="fas fa-user-md"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4">Kişisel Değerlendirme</h3>
+                    <p class="text-gray-400">45 dakikalık detaylı başlangıç konsültasyonu ve kişisel motivasyon profil analizi</p>
+                </div>
+
+                <div class="card-hover rounded-xl p-8 text-center">
+                    <div class="text-blue-400 text-5xl mb-4">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4">Psikolojik Destek</h3>
+                    <p class="text-gray-400">Davranış değişikliği psikolojisi ve motivasyon sürdürme teknikleri</p>
+                </div>
+
+                <div class="card-hover rounded-xl p-8 text-center">
+                    <div class="text-green-400 text-5xl mb-4">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4">WhatsApp Destek Grubu</h3>
+                    <p class="text-gray-400">Premium destek grubu ile sürekli motivasyon ve anlık soru-cevap</p>
+                </div>
+
+                <div class="card-hover rounded-xl p-8 text-center">
+                    <div class="text-purple-400 text-5xl mb-4">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4">Haftalık Değerlendirme</h3>
+                    <p class="text-gray-400">İlerleme takibi ve kişisel gelişim raporu her hafta</p>
+                </div>
+
+                <div class="card-hover rounded-xl p-8 text-center">
+                    <div class="text-yellow-400 text-5xl mb-4">
+                        <i class="fas fa-book-open"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4">45+ Kılavuz ve Rehber</h3>
+                    <p class="text-gray-400">Koşu ve spor hakkında kapsamlı kılavuz kitaplığı</p>
+                </div>
+
+                <div class="card-hover rounded-xl p-8 text-center">
+                    <div class="text-red-400 text-5xl mb-4">
+                        <i class="fas fa-calendar-check"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4">3 Aylık Takip</h3>
+                    <p class="text-gray-400">Program sonrası 3 ay boyunca devam eden destek sistemi</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PDF Section -->
+    <section class="py-20 bg-gray-900">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="poppins text-4xl font-bold mb-8">
+                <span class="gradient-text">Program Detay Sunumu</span>
+            </h2>
+            <p class="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
+                4 haftalık koşu dönüşüm programımızın detaylı tanıtımını incelemek için 
+                aşağıdaki linke tıklayın.
+            </p>
+            
+            <div class="max-w-md mx-auto">
+                <a href="https://gensparkstorageprodwest.blob.core.windows.net/personal/81c0095e-dba5-4d9f-887a-caf49d5f9762/upload/default/ffe5f4d1-167f-42c6-bb47-b1076503f771?se=2025-09-04T19%3A14%3A22Z&sp=r&sv=2025-05-05&sr=b&rsct=application/pdf&sig=XkqC3VUUIuXaxVLrV/pYUAJ13QEXmo7lTDX7owqak7E%3D" 
+                   target="_blank" 
+                   class="btn-primary text-lg inline-flex items-center">
+                    <i class="fas fa-file-pdf mr-2"></i>
+                    Program Tanıtımını İncele (PDF)
+                </a>
+            </div>
+
+            <div class="mt-8 text-sm text-gray-400">
+                <p>📅 Başlangıç: 16 Eylül | 👥 Kontenjan: 12 Kişi | 📍 Suadiye/Caddebostan</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-20">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="poppins text-4xl md:text-5xl font-bold mb-6">
+                    <span class="gradient-text">Başarı Hikayeleri</span>
+                </h2>
+                <p class="text-xl text-gray-300">Size benzer insanların dönüşüm hikayelerini dinleyin</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="card-hover rounded-xl p-8">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-gradient-to-r from-orange-400 to-red-400 rounded-full flex items-center justify-center text-white font-bold">
+                            S
+                        </div>
+                        <div class="ml-4">
+                            <h4 class="font-semibold">Sarah K., 42</h4>
+                            <p class="text-sm text-gray-400">Kardiyolog</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-300 mb-4">
+                        "Mesleki bilgime rağmen hareketsiz yaşıyordum. Bu program bana sadece koşmayı değil, 
+                        alışkanlık bilimini öğretti. 4 hafta sonra sabah koşusu günümün en sevdiğim kısmı oldu."
+                    </p>
+                    <div class="flex text-yellow-400">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+
+                <div class="card-hover rounded-xl p-8">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-gradient-to-r from-blue-400 to-purple-400 rounded-full flex items-center justify-center text-white font-bold">
+                            M
+                        </div>
+                        <div class="ml-4">
+                            <h4 class="font-semibold">Mehmet T., 38</h4>
+                            <p class="text-sm text-gray-400">Yazılım Geliştirici</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-300 mb-4">
+                        "Masa başında 10 saatlik iş sonrası yapabileceğim en son şey koşu sanıyordum. 
+                        Şimdi koşu sayesinde işte daha verimli ve enerjik olduğumu fark ediyorum."
+                    </p>
+                    <div class="flex text-yellow-400">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+
+                <div class="card-hover rounded-xl p-8">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-gradient-to-r from-green-400 to-blue-400 rounded-full flex items-center justify-center text-white font-bold">
+                            A
+                        </div>
+                        <div class="ml-4">
+                            <h4 class="font-semibold">Ayşe D., 35</h4>
+                            <p class="text-sm text-gray-400">3 Çocuk Annesi</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-300 mb-4">
+                        "3 çocuk annesi olarak kendime zaman ayırmak imkansız gibiydi. Bu program 
+                        bana sabahın erken saatlerinde kendimle kaliteçi zaman geçirmeyi öğretti."
+                    </p>
+                    <div class="flex text-yellow-400">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="py-20 gradient-bg">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="poppins text-4xl md:text-5xl font-bold mb-8 text-white">
+                Premium Dönüşüm Paketi
+            </h2>
+            
+            <div class="max-w-lg mx-auto">
+                <div class="bg-white bg-opacity-10 rounded-2xl p-8 border border-white border-opacity-20">
+                    <div class="text-center mb-8">
+                        <div class="text-6xl font-bold text-white mb-2">6.000₺</div>
+                        <p class="text-blue-100">4 Haftalık Tam Paket</p>
+                    </div>
+
+                    <div class="space-y-4 text-left mb-8">
+                        <div class="flex items-center text-white">
+                            <i class="fas fa-check-circle text-green-400 mr-3"></i>
+                            <span>12 Antrenman Seansı (3 seans/hafta)</span>
+                        </div>
+                        <div class="flex items-center text-white">
+                            <i class="fas fa-check-circle text-green-400 mr-3"></i>
+                            <span>Kişisel Başlangıç Konsültasyonu</span>
+                        </div>
+                        <div class="flex items-center text-white">
+                            <i class="fas fa-check-circle text-green-400 mr-3"></i>
+                            <span>WhatsApp Premium Destek Grubu</span>
+                        </div>
+                        <div class="flex items-center text-white">
+                            <i class="fas fa-check-circle text-green-400 mr-3"></i>
+                            <span>Haftalık İlerleme Değerlendirmesi</span>
+                        </div>
+                        <div class="flex items-center text-white">
+                            <i class="fas fa-check-circle text-green-400 mr-3"></i>
+                            <span>45+ Koşu ve Spor Kılavuzu</span>
+                        </div>
+                        <div class="flex items-center text-white">
+                            <i class="fas fa-check-circle text-green-400 mr-3"></i>
+                            <span>3 Aylık Program Sonrası Takip</span>
+                        </div>
+                        <div class="flex items-center text-white">
+                            <i class="fas fa-check-circle text-green-400 mr-3"></i>
+                            <span>Kişisel Başarı Sertifikası</span>
+                        </div>
+                    </div>
+
+                    <div class="border-t border-white border-opacity-20 pt-6 mb-8">
+                        <div class="bg-orange-500 bg-opacity-20 rounded-lg p-4">
+                            <h4 class="font-semibold text-white mb-2">💎 BONUS</h4>
+                            <p class="text-sm text-blue-100">Program sonrası kişisel antrenör desteği imkanı</p>
+                        </div>
+                    </div>
+
+                    <a href="https://forms.gle/unfXE4mPCrxvVC1z6" 
+                       class="btn-primary w-full text-center block text-xl py-4">
+                        <i class="fas fa-rocket mr-2"></i>Hemen Kayıt Ol
+                    </a>
+
+                    <div class="mt-6 text-sm text-blue-100">
+                        <p><i class="fas fa-shield-alt mr-2"></i>100% Memnuniyet Garantisi</p>
+                        <p class="mt-2">Bu ay kalan kontenjan: <span class="text-orange-400 font-semibold">8 kişi</span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-20">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="poppins text-4xl md:text-5xl font-bold mb-6">
+                    <span class="gradient-text">Sıkça Sorulan Sorular</span>
+                </h2>
+            </div>
+
+            <div class="max-w-4xl mx-auto">
+                <div class="accordion-item">
+                    <div class="accordion-header" onclick="toggleAccordion(0)">
+                        <div class="flex justify-between items-center">
+                            <h3 class="text-xl font-semibold">Hiç koşu yapmadım, ben de katılabilir miyim?</h3>
+                            <i class="fas fa-chevron-down transition-transform duration-300"></i>
+                        </div>
+                    </div>
+                    <div class="accordion-content">
+                        <p class="text-gray-300">
+                            Kesinlikle! Program özellikle hiç koşu yapmamış kişiler için tasarlandı. 
+                            Yürümekten başlayarak kademeli olarak koşuya geçiş yapacaksınız.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <div class="accordion-header" onclick="toggleAccordion(1)">
+                        <div class="flex justify-between items-center">
+                            <h3 class="text-xl font-semibold">Yaşım 45, bu yaşta koşuya başlamak uygun mu?</h3>
+                            <i class="fas fa-chevron-down transition-transform duration-300"></i>
+                        </div>
+                    </div>
+                    <div class="accordion-content">
+                        <p class="text-gray-300">
+                            Yaş sadece bir sayı! 45+ yaş grubundaki katılımcılarımızın başarı oranı çok yüksek. 
+                            Kişisel sağlık durumunuza göre özelleştirilmiş yaklaşım uyguluyoruz.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <div class="accordion-header" onclick="toggleAccordion(2)">
+                        <div class="flex justify-between items-center">
+                            <h3 class="text-xl font-semibold">Programdan sonra tek başıma koşabilecek miyim?</h3>
+                            <i class="fas fa-chevron-down transition-transform duration-300"></i>
+                        </div>
+                    </div>
+                    <div class="accordion-content">
+                        <p class="text-gray-300">
+                            Evet, program sonunda bağımsız koşabilecek duruma geleceksiniz. Ayrıca memnun olursanız, 
+                            bu değişim yolculuğunda kişisel antrenörünüz olarak bizi tercih edebilirsiniz. 
+                            Uzun vadeli destek ve gelişim için birlikte çalışmaya devam edebiliriz.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <div class="accordion-header" onclick="toggleAccordion(3)">
+                        <div class="flex justify-between items-center">
+                            <h3 class="text-xl font-semibold">Hava şartları kötü olduğunda ne yapacağız?</h3>
+                            <i class="fas fa-chevron-down transition-transform duration-300"></i>
+                        </div>
+                    </div>
+                    <div class="accordion-content">
+                        <p class="text-gray-300">
+                            Kapalı alan alternatifleri ve ev egzersizleri programa dahil. 
+                            Ayrıca hava şartlarında koşma teknikleri de öğretilecek.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <div class="accordion-header" onclick="toggleAccordion(4)">
+                        <div class="flex justify-between items-center">
+                            <h3 class="text-xl font-semibold">Özel ekipman almam gerekecek mi?</h3>
+                            <i class="fas fa-chevron-down transition-transform duration-300"></i>
+                        </div>
+                    </div>
+                    <div class="accordion-content">
+                        <p class="text-gray-300">
+                            Sadece uygun koşu ayakkabısı yeterli. Ayakkabı seçimi konusunda 
+                            detaylı rehberlik sağlıyoruz. Diğer ekipmanlar opsiyonel.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="py-20 gradient-bg">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="poppins text-4xl md:text-5xl font-bold mb-8 text-white">
+                Dönüşüm Yolculuğunuz Başlasın
+            </h2>
+            <p class="text-xl text-blue-100 mb-12 max-w-2xl mx-auto">
+                4 haftada hayatınızı değiştiren bu yolculuğa katılmaya hazır mısınız? 
+                Sorularınız için WhatsApp'tan ulaşın veya direkt kayıt olun.
+            </p>
+
+            <div class="flex flex-col md:flex-row gap-6 justify-center items-center">
+                <a href="https://wa.me/905344678855?text=Merhaba!%204%20Haftada%20Değişime%20Adım%20Atın%20programı%20hakkında%20bilgi%20almak%20istiyorum.%20🏃‍♀️" 
+                   class="btn-secondary text-lg">
+                    <i class="fab fa-whatsapp mr-2"></i>WhatsApp'tan Soru Sor
+                </a>
+                
+                <a href="https://forms.gle/unfXE4mPCrxvVC1z6" 
+                   class="btn-primary text-lg">
+                    <i class="fas fa-play-circle mr-2"></i>Hemen Kayıt Ol
+                </a>
+            </div>
+
+            <div class="mt-12 text-blue-100">
+                <p class="mb-4">📞 İletişim: +90 534 467 88 55</p>
+                <p class="text-sm">Bu ay kalan kontenjan: <span class="text-orange-400 font-semibold">8 kişi</span></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 bg-gray-900">
+        <div class="container mx-auto px-4 text-center">
+            <h3 class="poppins text-2xl font-bold mb-4 gradient-text">
+                4 Haftada Değişime Adım Atın
+            </h3>
+            <p class="text-gray-400 mb-6">
+                Hareket ile hayatınızı dönüştürün. Bilimsel metodoloji ve psikolojik destek ile 
+                koşuyu yaşam tarzınız haline getirin.
+            </p>
+            <div class="text-sm text-gray-500">
+                <p>&copy; 2024 Premium Koşu Dönüşüm Programı. Tüm hakları saklıdır.</p>
+                <p class="mt-2">Harvard Medical School ve Mayo Clinic araştırmaları temelli metodoloji</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Progress bar animation
+        window.addEventListener('load', function() {
+            setTimeout(() => {
+                document.getElementById('progressBar').style.width = '73%';
+            }, 1000);
+        });
+
+        // Accordion functionality
+        function toggleAccordion(index) {
+            const accordions = document.querySelectorAll('.accordion-content');
+            const icons = document.querySelectorAll('.accordion-header i');
+            
+            accordions.forEach((accordion, i) => {
+                if (i === index) {
+                    accordion.classList.toggle('active');
+                    icons[i].style.transform = accordion.classList.contains('active') ? 'rotate(180deg)' : 'rotate(0deg)';
+                } else {
+                    accordion.classList.remove('active');
+                    icons[i].style.transform = 'rotate(0deg)';
+                }
+            });
+        }
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Fade in animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+
+</body>
+</html>
+    <script id="html_badge_script1">
+        window.__genspark_remove_badge_link = "https://www.genspark.ai/api/html_badge/" +
+            "remove_badge?token=To%2FBnjzloZ3UfQdcSaYfDh4rtV8srapvWbr9X9RJLBPE8Vg8cwqDMYoWoK2P0BGAvY1BFFLuUxjYdsmMULMF9o245A81MNLvHUjPj6eISqLiuLQkyWSbHUpZt1dWCbh7rqe9V3yu25iN2Zq%2BMrLK95Tsu1VoTGrLvbW5xhskJvI8uRhJsjAAxBNPfy8P7%2FpysuFt8x8HYICDLe4SM2fER%2BU7vke5wqgtBONrIT%2BbEegWsMBWZ7M7%2BvF3nnPq0%2Fa5pLr9XFbkGcXKbbtLMlcKqVAxPE8WF0ecyc%2FcrgMS%2BHUhyOUmFNgQTac1ynOu%2BbYdzXodkmQVGbAN9lJbVoJdpfuOHx1GqboRJhlVmI%2BuPV91lwwveh1xUfCWa%2BWDJVUDutB12xCR16I%2B%2B6LpZZPiN3r%2Fcro%2FRdRCadgVAD271Fa0rpw8yiUkkSJuxwcvrtEcGR9ayw1jl2z19rXUCAi2IQl7JU%2FsDRCOae8fLkeSHF5lmqLpKMHzv0sPRPPlED%2FQUedUjow0%2BD7ALTT7mkdhAA%3D%3D";
+        window.__genspark_locale = "en-US";
+        window.__genspark_token = "To/BnjzloZ3UfQdcSaYfDh4rtV8srapvWbr9X9RJLBPE8Vg8cwqDMYoWoK2P0BGAvY1BFFLuUxjYdsmMULMF9o245A81MNLvHUjPj6eISqLiuLQkyWSbHUpZt1dWCbh7rqe9V3yu25iN2Zq+MrLK95Tsu1VoTGrLvbW5xhskJvI8uRhJsjAAxBNPfy8P7/pysuFt8x8HYICDLe4SM2fER+U7vke5wqgtBONrIT+bEegWsMBWZ7M7+vF3nnPq0/a5pLr9XFbkGcXKbbtLMlcKqVAxPE8WF0ecyc/crgMS+HUhyOUmFNgQTac1ynOu+bYdzXodkmQVGbAN9lJbVoJdpfuOHx1GqboRJhlVmI+uPV91lwwveh1xUfCWa+WDJVUDutB12xCR16I++6LpZZPiN3r/cro/RdRCadgVAD271Fa0rpw8yiUkkSJuxwcvrtEcGR9ayw1jl2z19rXUCAi2IQl7JU/sDRCOae8fLkeSHF5lmqLpKMHzv0sPRPPlED/QUedUjow0+D7ALTT7mkdhAA==";
+    </script>
+    
+    <script id="html_notice_dialog_script" src="https://www.genspark.ai/notice_dialog.js"></script>
+    
